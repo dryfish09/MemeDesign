@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meme.css - Thư viện UI Meme Design</title>
+  
+  <!-- ==================== MEME.CSS LIBRARY ==================== -->
+  <link href="https://fonts.googleapis.com/css2?family=Impact&family=Comic+Neue:wght@400;700&family=Roboto:wght@900&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================
+       MEME.CSS v1.0.0
+       Thư viện CSS cho Meme Design System
+       License: WTFPL (Do What The F*ck You Want)
+       ============================================ */
+
+    :root {
+      /* Màu sắc */
+      --meme-red: #FF0000;
+      --meme-blue: #0000FF;
+      --meme-green: #00FF00;
+      --meme-yellow: #FFD700;
+      --meme-orange: #FF4500;
+      --meme-purple: #8B00FF;
+      --meme-pink: #FF69B4;
+      --meme-white: #FFFFFF;
+      --meme-black: #000000;
+      
+      /* Font */
+      --meme-font-impact: 'Impact', 'Arial Black', sans-serif;
+      --meme-font-comic: 'Comic Neue', 'Comic Sans MS', cursive;
+      
+      /* Border & Shadow */
+      --meme-border: 3px solid #000000;
+      --meme-shadow: 4px 4px 0px #000000;
+      --meme-shadow-sm: 2px 2px 0px #000000;
+      
+      /* Animation */
+      --meme-transition: all 0.1s ease;
+    }
+
+    /* Reset */
+    .meme *,
+    .meme *::before,
+    .meme *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ===== CONTAINER ===== */
+    .meme-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* ===== BUTTONS ===== */
+    .meme-btn {
+      display: inline-block;
+      padding: 12px 24px;
+      font-family: var(--meme-font-impact);
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      border: var(--meme-border);
+      box-shadow: var(--meme-shadow);
+      transition: var(--meme-transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .meme-btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(0.9);
+    }
+
+    .meme-btn:active {
+      transform: translateY(2px);
+      box-shadow: var(--meme-shadow-sm);
+    }
+
+    .meme-btn-red {
+      background: var(--meme-red);
+      color: var(--meme-white);
+    }
+
+    .meme-btn-blue {
+      background: var(--meme-blue);
+      color: var(--meme-white);
+    }
+
+    .meme-btn-green {
+      background: var(--meme-green);
+      color: var(--meme-black);
+    }
+
+    .meme-btn-yellow {
+      background: var(--meme-yellow);
+      color: var(--meme-black);
+    }
+
+    .meme-btn-purple {
+      background: var(--meme-purple);
+      color: var(--meme-white);
+    }
+
+    .meme-btn-pink {
+      background: var(--meme-pink);
+      color: var(--meme-black);
+    }
+
+    /* Button sizes */
+    .meme-btn-lg {
+      padding: 16px 32px;
+      font-size: 1.5rem;
+    }
+
+    .meme-btn-xl {
+      padding: 20px 40px;
+      font-size: 2rem;
+    }
+
+    .meme-btn-block {
+      display: block;
+      width: 100%;
+    }
+
+    /* Subscribe button */
+    .meme-btn-subscribe {
+      background: var(--meme-red);
+      color: var(--meme-white);
+      animation: meme-pulse 1.5s infinite;
+    }
+
+    @keyframes meme-pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* ===== CARDS ===== */
+    .meme-card {
+      background: var(--meme-white);
+      border: var(--meme-border);
+      box-shadow: var(--meme-shadow);
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+
+    .meme-card:hover {
+      transform: rotate(1deg) scale(1.02);
+    }
+
+    .meme-card-img {
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      position: relative;
+    }
+
+    .meme-card-body {
+      padding: 20px;
+    }
+
+    .meme-card-title {
+      font-family: var(--meme-font-impact);
+      font-size: 1.8rem;
+      color: var(--meme-black);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .meme-card-text {
+      font-family: var(--meme-font-comic);
+      font-size: 1rem;
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    /* ===== FORMS ===== */
+    .meme-input {
+      width: 100%;
+      padding: 12px;
+      font-family: var(--meme-font-comic);
+      font-size: 1rem;
+      border: var(--meme-border);
+      box-shadow: var(--meme-shadow-sm);
+      outline: none;
+      transition: var(--meme-transition);
+    }
+
+    .meme-input:focus {
+      transform: scale(1.02);
+      background: #FFFDE7;
+    }
+
+    .meme-label {
+      display: block;
+      font-family: var(--meme-font-impact);
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .meme-textarea {
+      width: 100%;
+      min-height: 120px;
+      padding: 12px;
+      font-family: var(--meme-font-comic);
+      font-size: 1rem;
+      border: var(--meme-border);
+      box-shadow: var(--meme-shadow-sm);
+      outline: none;
+      resize: vertical;
+      transition: var(--meme-transition);
+    }
+
+    .meme-textarea:focus {
+      transform: scale(1.02);
+    }
+
+    /* ===== ALERTS ===== */
+    .meme-alert {
+      padding: 16px;
+      border: var(--meme-border);
+      box-shadow: var(--meme-shadow);
+      font-family: var(--meme-font-impact);
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .meme-alert-success {
+      background: var(--meme-green);
+      color: var(--meme-black);
+    }
+
+    .meme-alert-error {
+      background: var(--meme-red);
+      color: var(--meme-white);
+      animation: meme-glitch 0.3s infinite;
+    }
+
+    @keyframes meme-glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(2px, -2px); }
+      60% { transform: translate(-2px, -2px); }
+      80% { transform: translate(2px, 2px); }
+      100% { transform: translate(0); }
+    }
+
+    .meme-alert-warning {
+      background: var(--meme-yellow);
+      color: var(--meme-black);
+    }
+
+    .meme-alert-info {
+      background: var(--meme-blue);
+      color: var(--meme-white);
+    }
+
+    /* ===== BADGES ===== */
+    .meme-badge {
+      display: inline-block;
+      padding: 8px 16px;
+      background: var(--meme-purple);
+      color: var(--meme-white);
+      border: var(--meme-border);
+      font-family: var(--meme-font-impact);
+      font-size: 1rem;
+      text-transform: uppercase;
+      box-shadow: var(--meme-shadow-sm);
+      transform: rotate(-3deg);
+    }
+
+    .meme-badge-new {
+      background: var(--meme-green);
+      color: var(--meme-black);
+      animation: meme-glow 1s infinite;
+    }
+
+    @keyframes meme-glow {
+      0%, 100% { box-shadow: 0px 0px 10px var(--meme-green); }
+      50% { box-shadow: 0px 0px 30px var(--meme-green); }
+    }
+
+    .meme-badge-hot {
+      background: var(--meme-red);
+      animation: meme-shake 0.3s infinite;
+    }
+
+    @keyframes meme-shake {
+      0%, 100% { transform: rotate(-3deg); }
+      50% { transform: rotate(3deg); }
+    }
+
+    /* ===== PROGRESS BAR ===== */
+    .meme-progress {
+      width: 100%;
+      height: 30px;
+      background: var(--meme-white);
+      border: var(--meme-border);
+      box-shadow: var(--meme-shadow-sm);
+      overflow: hidden;
+    }
+
+    .meme-progress-bar {
+      height: 100%;
+      background: repeating-linear-gradient(
+        45deg,
+        var(--meme-yellow),
+        var(--meme-yellow) 10px,
+        var(--meme-black) 10px,
+        var(--meme-black) 20px
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--meme-font-impact);
+      font-size: 0.8rem;
+      color: var(--meme-black);
+      text-shadow: 1px 1px 0px var(--meme-white);
+      transition: width 0.5s;
+    }
+
+    /* ===== TOGGLE ===== */
+    .meme-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .meme-toggle-track {
+      width: 60px;
+      height: 30px;
+      background: #666;
+      border: var(--meme-border);
+      position: relative;
+      transition: var(--meme-transition);
+    }
+
+    .meme-toggle-thumb {
+      width: 22px;
+      height: 22px;
+      background: var(--meme-white);
+      border: 2px solid var(--meme-black);
+      position: absolute;
+      top: 1px;
+      left: 2px;
+      transition: var(--meme-transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+
+    .meme-toggle-input {
+      display: none;
+    }
+
+    .meme-toggle-input:checked + .meme-toggle-track {
+      background: var(--meme-green);
+    }
+
+    .meme-toggle-input:checked + .meme-toggle-track .meme-toggle-thumb {
+      left: 33px;
+    }
+
+    /* ===== HEADERS ===== */
+    .meme-header {
+      background: var(--meme-red);
+      color: var(--meme-white);
+      border: var(--meme-border);
+      box-shadow: var(--meme-shadow);
+      padding: 15px 30px;
+      text-align: center;
+      font-family: var(--meme-font-impact);
+      text-transform: uppercase;
+      margin-bottom: 30px;
+    }
+
+    .meme-header h1 {
+      font-size: 2.5rem;
+      text-shadow: 2px 2px 0px var(--meme-black);
+      letter-spacing: 2px;
+    }
+
+    /* ===== UTILITIES ===== */
+    .meme-text-center {
+      text-align: center;
+    }
+
+    .meme-text-impact {
+      font-family: var(--meme-font-impact);
+    }
+
+    .meme-text-comic {
+      font-family: var(--meme-font-comic);
+    }
+
+    .meme-mt-1 { margin-top: 10px; }
+    .meme-mt-2 { margin-top: 20px; }
+    .meme-mt-3 { margin-top: 30px; }
+    .meme-mb-1 { margin-bottom: 10px; }
+    .meme-mb-2 { margin-bottom: 20px; }
+    .meme-mb-3 { margin-bottom: 30px; }
+
+    .meme-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .meme-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .meme-flex-center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    /* ===== BACKGROUNDS ===== */
+    .meme-bg-rainbow {
+      background: linear-gradient(45deg, #ff0000, #ff8800, #ffff00, #00ff00, #0088ff, #8b00ff);
+      background-size: 400% 400%;
+      animation: meme-rainbow 5s ease infinite;
+    }
+
+    @keyframes meme-rainbow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .meme-bg-dark {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      border: var(--meme-border);
+    }
+
+    /* ===== SECTION TITLE ===== */
+    .meme-section-title {
+      font-family: var(--meme-font-impact);
+      font-size: 2rem;
+      color: var(--meme-yellow);
+      text-shadow: 2px 2px 0px var(--meme-black);
+      text-align: center;
+      margin: 30px 0 20px;
+      text-transform: uppercase;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .meme-header h1 {
+        font-size: 1.5rem;
+      }
+      .meme-section-title {
+        font-size: 1.5rem;
+      }
+      .meme-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <!-- ==================== END MEME.CSS ==================== -->
+</head>
+<body class="meme meme-bg-rainbow">
+
+  <div class="meme-container">
+
+    <!-- Header -->
+    <header class="meme-header">
+      <h1>🚀 MEME.CSS - Demo</h1>
+    </header>
+
+    <!-- Buttons -->
+    <h2 class="meme-section-title">Buttons</h2>
+    <div class="meme-bg-dark meme-flex-center">
+      <button class="meme-btn meme-btn-red">Red Button</button>
+      <button class="meme-btn meme-btn-blue">Blue Button</button>
+      <button class="meme-btn meme-btn-green">Green Button</button>
+      <button class="meme-btn meme-btn-yellow">Yellow Button</button>
+      <button class="meme-btn meme-btn-pink meme-btn-lg">Large Pink</button>
+      <button class="meme-btn meme-btn-red meme-btn-subscribe meme-btn-xl">Subscribe 🔔</button>
+      <button class="meme-btn meme-btn-purple meme-btn-block">Block Button</button>
+    </div>
+
+    <!-- Cards -->
+    <h2 class="meme-section-title">Cards</h2>
+    <div class="meme-grid">
+      <div class="meme-card">
+        <div class="meme-card-img" style="background: linear-gradient(45deg, #FFD700, #FF8C00);">🐸</div>
+        <div class="meme-card-body">
+          <div class="meme-card-title">Pepe Card</div>
+          <p class="meme-card-text">Feels good man.</p>
+          <button class="meme-btn meme-btn-green">BUY</button>
+        </div>
+      </div>
+
+      <div class="meme-card">
+        <div class="meme-card-img" style="background: linear-gradient(45deg, #FF69B4, #8B00FF);">💀</div>
+        <div class="meme-card-body">
+          <div class="meme-card-title">Skull Card</div>
+          <p class="meme-card-text">Bruh moment.</p>
+          <button class="meme-btn meme-btn-red">DEAD</button>
+        </div>
+      </div>
+
+      <div class="meme-card">
+        <div class="meme-card-img" style="background: linear-gradient(45deg, #00FF00, #0000FF);">🗿</div>
+        <div class="meme-card-body">
+          <div class="meme-card-title">Moai Card</div>
+          <p class="meme-card-text">🗿🗿🗿🗿🗿</p>
+          <button class="meme-btn meme-btn-purple">SAME</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Forms -->
+    <h2 class="meme-section-title">Forms</h2>
+    <div class="meme-bg-dark">
+      <label class="meme-label" style="color: var(--meme-green);">Username:</label>
+      <input type="text" class="meme-input meme-mb-2" placeholder="Enter epic name...">
+      
+      <label class="meme-label" style="color: var(--meme-pink);">Bio:</label>
+      <textarea class="meme-textarea meme-mb-2" placeholder="Write your copypasta..."></textarea>
+      
+      <button class="meme-btn meme-btn-green meme-btn-block">Submit 🚀</button>
+    </div>
+
+    <!-- Alerts -->
+    <h2 class="meme-section-title">Alerts</h2>
+    <div class="meme-alert meme-alert-success">✅ Success! Noice!</div>
+    <div class="meme-alert meme-alert-error">❌ Error! Bruh!</div>
+    <div class="meme-alert meme-alert-warning">⚠️ Warning! Sus!</div>
+    <div class="meme-alert meme-alert-info">ℹ️ Info: Touch grass!</div>
+
+    <!-- Badges -->
+    <h2 class="meme-section-title">Badges</h2>
+    <div class="meme-flex-center">
+      <span class="meme-badge meme-badge-new">NEW</span>
+      <span class="meme-badge meme-badge-hot">HOT 🔥</span>
+      <span class="meme-badge">OG</span>
+      <span class="meme-badge" style="background: var(--meme-yellow); color: black;">PREMIUM</span>
+    </div>
+
+    <!-- Progress -->
+    <h2 class="meme-section-title">Progress Bars</h2>
+    <div class="meme-bg-dark">
+      <div class="meme-progress meme-mb-2">
+        <div class="meme-progress-bar" style="width: 69%;">69%</div>
+      </div>
+      <div class="meme-progress">
+        <div class="meme-progress-bar" style="width: 42%;">42%</div>
+      </div>
+    </div>
+
+    <!-- Toggle -->
+    <h2 class="meme-section-title">Toggle</h2>
+    <div class="meme-flex-center">
+      <span class="meme-text-impact" style="font-size: 1.5rem;">CRINGE</span>
+      <label class="meme-toggle">
+        <input type="checkbox" class="meme-toggle-input" checked>
+        <div class="meme-toggle-track">
+          <div class="meme-toggle-thumb">👎</div>
+        </div>
+      </label>
+      <span class="meme-text-impact" style="font-size: 1.5rem;">BASED</span>
+    </div>
+
+  </div>
+
+</body>
+</html>
