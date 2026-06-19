@@ -163,11 +163,6 @@ git clone https://github.com/dryfish09/MemeDesign.git
 | **Typography** | `meme-text-impact`, `meme-text-comic`, `meme-text-center` |
 | **Spacing** | `meme-mt-1/2/3`, `meme-mb-1/2/3` |
 
----
-
-## 🖼️ Preview
-
-![MemeUIDesign Preview](assets/preview.png)
 
 ---
 
