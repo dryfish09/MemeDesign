@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meme.css - Thư viện UI Meme Design</title>
-  
-  <!-- ==================== MEME.CSS LIBRARY ==================== -->
+  <title>MemeUIDesign.css - Fixed v1.0.1</title>
+
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Impact&family=Comic+Neue:wght@400;700&family=Roboto:wght@900&display=swap" rel="stylesheet">
+
   <style>
     /* ============================================
-       MEME.CSS v1.0.0
-       Thư viện CSS cho Meme Design System
-       License: WTFPL (Do What The F*ck You Want)
+       MEME.CSS v1.0.1 - Bug Fixes
        ============================================ */
 
     :root {
@@ -25,24 +24,47 @@
       --meme-pink: #FF69B4;
       --meme-white: #FFFFFF;
       --meme-black: #000000;
-      
+
       /* Font */
       --meme-font-impact: 'Impact', 'Arial Black', sans-serif;
       --meme-font-comic: 'Comic Neue', 'Comic Sans MS', cursive;
-      
+
       /* Border & Shadow */
       --meme-border: 3px solid #000000;
       --meme-shadow: 4px 4px 0px #000000;
       --meme-shadow-sm: 2px 2px 0px #000000;
-      
+
       /* Animation */
       --meme-transition: all 0.1s ease;
     }
 
-    /* Reset */
-    .meme *,
-    .meme *::before,
-    .meme *::after {
+    /* Reset - SCOPED: Chỉ áp dụng cho element có class meme-* */
+    [class*="meme-btn"],
+    [class*="meme-card"],
+    [class*="meme-input"],
+    [class*="meme-alert"],
+    [class*="meme-badge"],
+    [class*="meme-progress"],
+    [class*="meme-toggle"],
+    [class*="meme-header"],
+    [class*="meme-label"],
+    [class*="meme-textarea"],
+    .meme-container,
+    .meme-grid,
+    .meme-flex,
+    .meme-flex-center,
+    .meme-bg-rainbow,
+    .meme-bg-dark,
+    .meme-section-title,
+    .meme-text-impact,
+    .meme-text-comic,
+    .meme-text-center,
+    .meme-mt-1,
+    .meme-mt-2,
+    .meme-mt-3,
+    .meme-mb-1,
+    .meme-mb-2,
+    .meme-mb-3 {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -111,7 +133,6 @@
       color: var(--meme-black);
     }
 
-    /* Button sizes */
     .meme-btn-lg {
       padding: 16px 32px;
       font-size: 1.5rem;
@@ -127,7 +148,6 @@
       width: 100%;
     }
 
-    /* Subscribe button */
     .meme-btn-subscribe {
       background: var(--meme-red);
       color: var(--meme-white);
@@ -135,8 +155,13 @@
     }
 
     @keyframes meme-pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+      0%,
+      100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
     }
 
     /* ===== CARDS ===== */
@@ -239,19 +264,42 @@
       color: var(--meme-black);
     }
 
+    /* FIXED: Glitch chỉ chạy khi hover, không tự động rung */
     .meme-alert-error {
       background: var(--meme-red);
       color: var(--meme-white);
+      transition: transform 0.1s;
+    }
+
+    .meme-alert-error:hover {
+      animation: meme-glitch 0.3s 2;
+      /* Chỉ chạy 2 lần khi hover */
+    }
+
+    /* Thêm class riêng nếu muốn glitch tự động */
+    .meme-alert-error.meme-glitch-auto {
       animation: meme-glitch 0.3s infinite;
     }
 
     @keyframes meme-glitch {
-      0% { transform: translate(0); }
-      20% { transform: translate(-2px, 2px); }
-      40% { transform: translate(2px, -2px); }
-      60% { transform: translate(-2px, -2px); }
-      80% { transform: translate(2px, 2px); }
-      100% { transform: translate(0); }
+      0% {
+        transform: translate(0);
+      }
+      20% {
+        transform: translate(-2px, 2px);
+      }
+      40% {
+        transform: translate(2px, -2px);
+      }
+      60% {
+        transform: translate(-2px, -2px);
+      }
+      80% {
+        transform: translate(2px, 2px);
+      }
+      100% {
+        transform: translate(0);
+      }
     }
 
     .meme-alert-warning {
@@ -285,8 +333,13 @@
     }
 
     @keyframes meme-glow {
-      0%, 100% { box-shadow: 0px 0px 10px var(--meme-green); }
-      50% { box-shadow: 0px 0px 30px var(--meme-green); }
+      0%,
+      100% {
+        box-shadow: 0px 0px 10px var(--meme-green);
+      }
+      50% {
+        box-shadow: 0px 0px 30px var(--meme-green);
+      }
     }
 
     .meme-badge-hot {
@@ -295,8 +348,13 @@
     }
 
     @keyframes meme-shake {
-      0%, 100% { transform: rotate(-3deg); }
-      50% { transform: rotate(3deg); }
+      0%,
+      100% {
+        transform: rotate(-3deg);
+      }
+      50% {
+        transform: rotate(3deg);
+      }
     }
 
     /* ===== PROGRESS BAR ===== */
@@ -311,13 +369,11 @@
 
     .meme-progress-bar {
       height: 100%;
-      background: repeating-linear-gradient(
-        45deg,
-        var(--meme-yellow),
-        var(--meme-yellow) 10px,
-        var(--meme-black) 10px,
-        var(--meme-black) 20px
-      );
+      background: repeating-linear-gradient(45deg,
+          var(--meme-yellow),
+          var(--meme-yellow) 10px,
+          var(--meme-black) 10px,
+          var(--meme-black) 20px);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -328,12 +384,13 @@
       transition: width 0.5s;
     }
 
-    /* ===== TOGGLE ===== */
+    /* ===== TOGGLE - FIXED ===== */
     .meme-toggle {
       display: inline-flex;
       align-items: center;
       gap: 10px;
       cursor: pointer;
+      user-select: none;
     }
 
     .meme-toggle-track {
@@ -342,7 +399,7 @@
       background: #666;
       border: var(--meme-border);
       position: relative;
-      transition: var(--meme-transition);
+      transition: background 0.2s;
     }
 
     .meme-toggle-thumb {
@@ -353,22 +410,24 @@
       position: absolute;
       top: 1px;
       left: 2px;
-      transition: var(--meme-transition);
+      transition: left 0.2s;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 12px;
+      line-height: 1;
     }
 
     .meme-toggle-input {
       display: none;
     }
 
-    .meme-toggle-input:checked + .meme-toggle-track {
+    /* FIXED: Khi checked -> đổi màu track & di chuyển thumb */
+    .meme-toggle-input:checked+.meme-toggle-track {
       background: var(--meme-green);
     }
 
-    .meme-toggle-input:checked + .meme-toggle-track .meme-toggle-thumb {
+    .meme-toggle-input:checked+.meme-toggle-track .meme-toggle-thumb {
       left: 33px;
     }
 
@@ -389,6 +448,7 @@
       font-size: 2.5rem;
       text-shadow: 2px 2px 0px var(--meme-black);
       letter-spacing: 2px;
+      margin: 0;
     }
 
     /* ===== UTILITIES ===== */
@@ -404,12 +464,29 @@
       font-family: var(--meme-font-comic);
     }
 
-    .meme-mt-1 { margin-top: 10px; }
-    .meme-mt-2 { margin-top: 20px; }
-    .meme-mt-3 { margin-top: 30px; }
-    .meme-mb-1 { margin-bottom: 10px; }
-    .meme-mb-2 { margin-bottom: 20px; }
-    .meme-mb-3 { margin-bottom: 30px; }
+    .meme-mt-1 {
+      margin-top: 10px;
+    }
+
+    .meme-mt-2 {
+      margin-top: 20px;
+    }
+
+    .meme-mt-3 {
+      margin-top: 30px;
+    }
+
+    .meme-mb-1 {
+      margin-bottom: 10px;
+    }
+
+    .meme-mb-2 {
+      margin-bottom: 20px;
+    }
+
+    .meme-mb-3 {
+      margin-bottom: 30px;
+    }
 
     .meme-grid {
       display: grid;
@@ -439,9 +516,15 @@
     }
 
     @keyframes meme-rainbow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
     .meme-bg-dark {
@@ -461,7 +544,7 @@
       text-transform: uppercase;
     }
 
-    /* Responsive */
+    /* ===== Responsive ===== */
     @media (max-width: 768px) {
       .meme-header h1 {
         font-size: 1.5rem;
@@ -474,38 +557,56 @@
       }
     }
   </style>
-  <!-- ==================== END MEME.CSS ==================== -->
 </head>
-<body class="meme meme-bg-rainbow">
+<body class="meme-bg-rainbow">
 
   <div class="meme-container">
 
-    <!-- Header -->
+    <!-- ===== HEADER ===== -->
     <header class="meme-header">
-      <h1>🚀 MEME.CSS - Demo</h1>
+      <h1>🚀 MEME.CSS - Bug Fixed v1.0.1</h1>
     </header>
 
-    <!-- Buttons -->
+    <!-- ===== TOGGLE FIX DEMO ===== -->
+    <h2 class="meme-section-title">🔘 Toggle Fixed 👎→👍</h2>
+    <div class="meme-flex-center meme-bg-dark">
+      <span class="meme-text-impact" style="font-size: 1.5rem; color: var(--meme-white);">CRINGE</span>
+
+      <label class="meme-toggle">
+        <input type="checkbox" class="meme-toggle-input" id="based-toggle">
+        <div class="meme-toggle-track">
+          <div class="meme-toggle-thumb">👎</div>
+        </div>
+      </label>
+
+      <span class="meme-text-impact" style="font-size: 1.5rem; color: var(--meme-white);">BASED</span>
+    </div>
+    <p class="meme-text-comic meme-text-center meme-mt-1" style="color: var(--meme-white);">
+      👆 Click toggle — emoji changes & state saved to localStorage!
+    </p>
+
+    <!-- ===== BUTTONS ===== -->
     <h2 class="meme-section-title">Buttons</h2>
     <div class="meme-bg-dark meme-flex-center">
-      <button class="meme-btn meme-btn-red">Red Button</button>
-      <button class="meme-btn meme-btn-blue">Blue Button</button>
-      <button class="meme-btn meme-btn-green">Green Button</button>
-      <button class="meme-btn meme-btn-yellow">Yellow Button</button>
-      <button class="meme-btn meme-btn-pink meme-btn-lg">Large Pink</button>
-      <button class="meme-btn meme-btn-red meme-btn-subscribe meme-btn-xl">Subscribe 🔔</button>
-      <button class="meme-btn meme-btn-purple meme-btn-block">Block Button</button>
+      <button class="meme-btn meme-btn-red">Red</button>
+      <button class="meme-btn meme-btn-blue">Blue</button>
+      <button class="meme-btn meme-btn-green">Green</button>
+      <button class="meme-btn meme-btn-yellow">Yellow</button>
+      <button class="meme-btn meme-btn-purple">Purple</button>
+      <button class="meme-btn meme-btn-pink meme-btn-lg">Pink LG</button>
+      <button class="meme-btn meme-btn-subscribe meme-btn-xl">Subscribe 🔔</button>
+      <button class="meme-btn meme-btn-red meme-btn-block">Full Width Block</button>
     </div>
 
-    <!-- Cards -->
+    <!-- ===== CARDS ===== -->
     <h2 class="meme-section-title">Cards</h2>
     <div class="meme-grid">
       <div class="meme-card">
         <div class="meme-card-img" style="background: linear-gradient(45deg, #FFD700, #FF8C00);">🐸</div>
         <div class="meme-card-body">
           <div class="meme-card-title">Pepe Card</div>
-          <p class="meme-card-text">Feels good man.</p>
-          <button class="meme-btn meme-btn-green">BUY</button>
+          <p class="meme-card-text">Feels good man. Rarest Pepe.</p>
+          <button class="meme-btn meme-btn-green meme-btn-block">BUY NOW</button>
         </div>
       </div>
 
@@ -513,74 +614,182 @@
         <div class="meme-card-img" style="background: linear-gradient(45deg, #FF69B4, #8B00FF);">💀</div>
         <div class="meme-card-body">
           <div class="meme-card-title">Skull Card</div>
-          <p class="meme-card-text">Bruh moment.</p>
-          <button class="meme-btn meme-btn-red">DEAD</button>
+          <p class="meme-card-text">When you die from cringe.</p>
+          <button class="meme-btn meme-btn-red meme-btn-block">💀 DEAD</button>
         </div>
       </div>
 
       <div class="meme-card">
         <div class="meme-card-img" style="background: linear-gradient(45deg, #00FF00, #0000FF);">🗿</div>
         <div class="meme-card-body">
-          <div class="meme-card-title">Moai Card</div>
-          <p class="meme-card-text">🗿🗿🗿🗿🗿</p>
-          <button class="meme-btn meme-btn-purple">SAME</button>
+          <div class="meme-card-title">Moai Card 🗿</div>
+          <p class="meme-card-text">🗿🗿🗿🗿🗿🗿🗿🗿🗿</p>
+          <button class="meme-btn meme-btn-purple meme-btn-block">🗿 SAME</button>
         </div>
       </div>
     </div>
 
-    <!-- Forms -->
+    <!-- ===== FORMS ===== -->
     <h2 class="meme-section-title">Forms</h2>
     <div class="meme-bg-dark">
       <label class="meme-label" style="color: var(--meme-green);">Username:</label>
       <input type="text" class="meme-input meme-mb-2" placeholder="Enter epic name...">
-      
+
       <label class="meme-label" style="color: var(--meme-pink);">Bio:</label>
-      <textarea class="meme-textarea meme-mb-2" placeholder="Write your copypasta..."></textarea>
-      
+      <textarea class="meme-textarea meme-mb-2" placeholder="Write your copypasta here..."></textarea>
+
       <button class="meme-btn meme-btn-green meme-btn-block">Submit 🚀</button>
     </div>
 
-    <!-- Alerts -->
-    <h2 class="meme-section-title">Alerts</h2>
+    <!-- ===== ALERTS ===== -->
+    <h2 class="meme-section-title">Alerts (Glitch Fixed)</h2>
     <div class="meme-alert meme-alert-success">✅ Success! Noice!</div>
-    <div class="meme-alert meme-alert-error">❌ Error! Bruh!</div>
+
+    <!-- Hover to glitch (runs 2x only) -->
+    <div class="meme-alert meme-alert-error">❌ Error! Hover me to glitch!</div>
+
+    <!-- Auto glitch with extra class -->
+    <div class="meme-alert meme-alert-error meme-glitch-auto">❌ Error! Auto glitch mode!</div>
+
     <div class="meme-alert meme-alert-warning">⚠️ Warning! Sus!</div>
     <div class="meme-alert meme-alert-info">ℹ️ Info: Touch grass!</div>
 
-    <!-- Badges -->
+    <!-- ===== BADGES ===== -->
     <h2 class="meme-section-title">Badges</h2>
-    <div class="meme-flex-center">
+    <div class="meme-flex-center meme-mb-3">
       <span class="meme-badge meme-badge-new">NEW</span>
       <span class="meme-badge meme-badge-hot">HOT 🔥</span>
       <span class="meme-badge">OG</span>
       <span class="meme-badge" style="background: var(--meme-yellow); color: black;">PREMIUM</span>
+      <span class="meme-badge" style="background: var(--meme-pink);">UWU</span>
     </div>
 
-    <!-- Progress -->
+    <!-- ===== PROGRESS BARS ===== -->
     <h2 class="meme-section-title">Progress Bars</h2>
     <div class="meme-bg-dark">
       <div class="meme-progress meme-mb-2">
         <div class="meme-progress-bar" style="width: 69%;">69%</div>
       </div>
-      <div class="meme-progress">
+      <div class="meme-progress meme-mb-2">
         <div class="meme-progress-bar" style="width: 42%;">42%</div>
+      </div>
+      <div class="meme-progress">
+        <div class="meme-progress-bar" style="width: 100%;">100% DONE</div>
       </div>
     </div>
 
-    <!-- Toggle -->
-    <h2 class="meme-section-title">Toggle</h2>
-    <div class="meme-flex-center">
-      <span class="meme-text-impact" style="font-size: 1.5rem;">CRINGE</span>
-      <label class="meme-toggle">
-        <input type="checkbox" class="meme-toggle-input" checked>
-        <div class="meme-toggle-track">
-          <div class="meme-toggle-thumb">👎</div>
-        </div>
-      </label>
-      <span class="meme-text-impact" style="font-size: 1.5rem;">BASED</span>
+    <!-- ===== HEADER EXAMPLE ===== -->
+    <h2 class="meme-section-title">Section Header</h2>
+    <header class="meme-header">
+      <h1>This is a meme header</h1>
+      <p class="meme-text-comic" style="font-size: 1.2rem; margin-top: 10px;">Subtitle in comic sans</p>
+    </header>
+
+    <!-- ===== UTILITY CLASSES ===== -->
+    <h2 class="meme-section-title">Utility Classes</h2>
+    <div class="meme-bg-dark">
+      <p class="meme-text-impact meme-text-center" style="color: var(--meme-yellow); font-size: 1.5rem;">
+        meme-text-impact + meme-text-center
+      </p>
+      <p class="meme-text-comic meme-text-center" style="color: var(--meme-pink); font-size: 1.2rem;">
+        meme-text-comic + meme-text-center
+      </p>
+      <div class="meme-mt-2 meme-mb-2">
+        <span style="color: var(--meme-white);">Spacing: meme-mt-2 + meme-mb-2</span>
+      </div>
     </div>
 
   </div>
+
+  <!-- ==================== MEME.JS ==================== -->
+  <script>
+    /* ============================================
+       MEME.JS v1.0.0 - JavaScript for MemeUI
+       ============================================ */
+
+    (function() {
+      'use strict';
+
+      /**
+       * MemeUI - Khởi tạo tất cả components có logic
+       */
+      const MemeUI = {
+        init: function() {
+          this.initToggles();
+          console.log('💀 MemeUI initialized! All bugs fixed.');
+        },
+
+        /**
+         * FIXED: Toggle switch - đồng bộ emoji với trạng thái
+         * Khi bật: 👍 | Khi tắt: 👎
+         */
+        initToggles: function() {
+          const toggles = document.querySelectorAll('.meme-toggle-input');
+
+          toggles.forEach(function(toggle) {
+            // Set initial state
+            MemeUI.updateToggleEmoji(toggle);
+
+            // Listen for changes
+            toggle.addEventListener('change', function() {
+              MemeUI.updateToggleEmoji(this);
+              MemeUI.saveToggleState(this);
+              console.log('Toggle changed:', this.id, this.checked ? '👍 BASED' : '👎 CRINGE');
+            });
+          });
+
+          // Restore saved states
+          MemeUI.restoreToggleStates();
+        },
+
+        /**
+         * Cập nhật emoji trên thumb
+         */
+        updateToggleEmoji: function(toggle) {
+          const thumb = toggle.nextElementSibling?.querySelector('.meme-toggle-thumb');
+          if (thumb) {
+            thumb.textContent = toggle.checked ? '👍' : '👎';
+          }
+        },
+
+        /**
+         * Lưu trạng thái toggle vào localStorage
+         */
+        saveToggleState: function(toggle) {
+          if (toggle.id) {
+            localStorage.setItem('meme-toggle-' + toggle.id, toggle.checked);
+          }
+        },
+
+        /**
+         * Khôi phục trạng thái toggle từ localStorage
+         */
+        restoreToggleStates: function() {
+          const toggles = document.querySelectorAll('.meme-toggle-input[id]');
+          toggles.forEach(function(toggle) {
+            const saved = localStorage.getItem('meme-toggle-' + toggle.id);
+            if (saved !== null) {
+              toggle.checked = saved === 'true';
+              MemeUI.updateToggleEmoji(toggle);
+            }
+          });
+        }
+      };
+
+      // Auto-init khi DOM ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+          MemeUI.init();
+        });
+      } else {
+        MemeUI.init();
+      }
+
+      // Export ra global
+      window.MemeUI = MemeUI;
+
+    })();
+  </script>
 
 </body>
 </html>
