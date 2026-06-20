@@ -1,13 +1,14 @@
 
-# 🎨 MemeUIDesign.css
+# 🎨 MemeDesign
 
-![Version](https://img.shields.io/badge/version-1.0.1-red?style=flat-square)
+![Version](https://img.shields.io/badge/version-1.1.0-red?style=flat-square)
 ![License](https://img.shields.io/badge/license-WTFPL-brightgreen?style=flat-square)
 ![Made With](https://img.shields.io/badge/made%20with-%F0%9F%92%80%20cringe-purple?style=flat-square)
+![API](https://img.shields.io/badge/API-stable-blue?style=flat-square)
 
 > When you want your UI to be absolutely **CHAD** 💪🗿
 
-**MemeUIDesign.css** is a CSS library that brings the chaotic energy of internet meme culture to web design. Bold borders, Impact font, eye-searing colors, and zero subtlety — just like the internet intended.
+**MemeDesign** is a CSS library that brings the chaotic energy of internet meme culture to web design. Bold borders, Impact font, eye-searing colors, and zero subtlety — just like the internet intended.
 
 ---
 
@@ -20,7 +21,7 @@
 
 ### Local
 ```bash
-git clone https://github.com/dryfish09/MemeDedign.git
+git clone https://github.com/dryfish09/MemeDesign.git
 ```
 ```html
 <link rel="stylesheet" href="path/to/src/MemeUIDesign.css">
@@ -49,6 +50,8 @@ git clone https://github.com/dryfish09/MemeDedign.git
 | `meme-btn-xl` | Extra large button |
 | `meme-btn-block` | Full-width button |
 | `meme-btn-subscribe` | Animated subscribe button |
+| `meme-btn-rainbow` | 🌈 Animated rainbow button |
+| `meme-btn-rainbow-static` | 🌈 Static rainbow button |
 
 ---
 
@@ -66,6 +69,8 @@ git clone https://github.com/dryfish09/MemeDedign.git
 </div>
 ```
 
+**Rainbow variants:** `meme-card-rainbow` (animated) · `meme-card-rainbow-static`
+
 ---
 
 ### 📝 Forms
@@ -76,6 +81,8 @@ git clone https://github.com/dryfish09/MemeDedign.git
 <label class="meme-label">Bio:</label>
 <textarea class="meme-textarea" placeholder="Write your copypasta..."></textarea>
 ```
+
+**Rainbow variants:** `meme-input-rainbow` · `meme-input-rainbow-static`
 
 ---
 
@@ -90,6 +97,8 @@ git clone https://github.com/dryfish09/MemeDedign.git
 <div class="meme-alert meme-alert-error meme-glitch-auto">❌ AUTO GLITCH!</div>
 ```
 
+**Rainbow variants:** `meme-alert-rainbow` · `meme-alert-rainbow-static`
+
 ---
 
 ### 🏷️ Badges
@@ -99,6 +108,8 @@ git clone https://github.com/dryfish09/MemeDedign.git
 <span class="meme-badge">OG</span>
 ```
 
+**Rainbow variants:** `meme-badge-rainbow` · `meme-badge-rainbow-static`
+
 ---
 
 ### 📊 Progress Bars
@@ -107,6 +118,8 @@ git clone https://github.com/dryfish09/MemeDedign.git
   <div class="meme-progress-bar" style="width: 69%;">69%</div>
 </div>
 ```
+
+**Rainbow variants:** `meme-progress-rainbow` · `meme-progress-rainbow-static`
 
 ---
 
@@ -120,10 +133,7 @@ git clone https://github.com/dryfish09/MemeDedign.git
 </label>
 ```
 
-> **JavaScript (optional):** Include `meme-ui.js` to persist toggle state in localStorage.
-> ```html
-> <script src="src/meme-ui.js"></script>
-> ```
+Toggle state is automatically saved to `localStorage` and restored on page load.
 
 ---
 
@@ -152,23 +162,45 @@ git clone https://github.com/dryfish09/MemeDedign.git
 <div class="meme-mt-2 meme-mb-3">Spaced content</div>
 ```
 
+**Rainbow text:** `meme-text-rainbow` · `meme-text-rainbow-static`
+
+---
+
+### 🌈 Headers & Titles
+```html
+<!-- Rainbow Headers -->
+<header class="meme-header-rainbow">
+  <h1>Animated Rainbow Header</h1>
+</header>
+
+<header class="meme-header-rainbow-static">
+  <h1>Static Rainbow Header</h1>
+</header>
+
+<!-- Rainbow Section Titles -->
+<h2 class="meme-section-title-rainbow">Animated Rainbow Title</h2>
+<h2 class="meme-section-title-rainbow-static">Static Rainbow Title</h2>
+```
+
+**Classic variants:** `meme-header` · `meme-section-title`
+
 ---
 
 ## 🎯 Complete Class Reference
 
 | Category | Classes |
 |----------|---------|
-| **Buttons** | `meme-btn`, `meme-btn-red`, `meme-btn-blue`, `meme-btn-green`, `meme-btn-yellow`, `meme-btn-purple`, `meme-btn-pink`, `meme-btn-lg`, `meme-btn-xl`, `meme-btn-block`, `meme-btn-subscribe` |
-| **Cards** | `meme-card`, `meme-card-img`, `meme-card-body`, `meme-card-title`, `meme-card-text` |
-| **Forms** | `meme-input`, `meme-label`, `meme-textarea` |
-| **Alerts** | `meme-alert`, `meme-alert-success`, `meme-alert-error`, `meme-alert-warning`, `meme-alert-info`, `meme-glitch-auto` |
-| **Badges** | `meme-badge`, `meme-badge-new`, `meme-badge-hot` |
-| **Progress** | `meme-progress`, `meme-progress-bar` |
+| **Buttons** | `meme-btn`, `meme-btn-red`, `meme-btn-blue`, `meme-btn-green`, `meme-btn-yellow`, `meme-btn-purple`, `meme-btn-pink`, `meme-btn-lg`, `meme-btn-xl`, `meme-btn-block`, `meme-btn-subscribe`, `meme-btn-rainbow`, `meme-btn-rainbow-static` |
+| **Cards** | `meme-card`, `meme-card-img`, `meme-card-body`, `meme-card-title`, `meme-card-text`, `meme-card-rainbow`, `meme-card-rainbow-static` |
+| **Forms** | `meme-input`, `meme-label`, `meme-textarea`, `meme-input-rainbow`, `meme-input-rainbow-static` |
+| **Alerts** | `meme-alert`, `meme-alert-success`, `meme-alert-error`, `meme-alert-warning`, `meme-alert-info`, `meme-glitch-auto`, `meme-alert-rainbow`, `meme-alert-rainbow-static` |
+| **Badges** | `meme-badge`, `meme-badge-new`, `meme-badge-hot`, `meme-badge-rainbow`, `meme-badge-rainbow-static` |
+| **Progress** | `meme-progress`, `meme-progress-bar`, `meme-progress-rainbow`, `meme-progress-rainbow-static` |
 | **Toggle** | `meme-toggle`, `meme-toggle-input`, `meme-toggle-track`, `meme-toggle-thumb` |
-| **Headers** | `meme-header`, `meme-section-title` |
+| **Headers** | `meme-header`, `meme-section-title`, `meme-header-rainbow`, `meme-header-rainbow-static`, `meme-section-title-rainbow`, `meme-section-title-rainbow-static` |
+| **Text** | `meme-text-impact`, `meme-text-comic`, `meme-text-center`, `meme-text-rainbow`, `meme-text-rainbow-static` |
 | **Layout** | `meme-container`, `meme-grid`, `meme-flex`, `meme-flex-center` |
 | **Backgrounds** | `meme-bg-rainbow`, `meme-bg-dark` |
-| **Typography** | `meme-text-impact`, `meme-text-comic`, `meme-text-center` |
 | **Spacing** | `meme-mt-1`, `meme-mt-2`, `meme-mt-3`, `meme-mb-1`, `meme-mb-2`, `meme-mb-3` |
 
 ---
@@ -192,6 +224,8 @@ git clone https://github.com/dryfish09/MemeDedign.git
 
   --meme-border: 3px solid #000000;
   --meme-shadow: 4px 4px 0px #000000;
+
+  --rainbow-speed: 8s; /* Control all rainbow animations */
 }
 ```
 
@@ -199,57 +233,17 @@ Override these variables to create your own cursed themes! 💀
 
 ---
 
-## 🧠 JavaScript API (meme-ui.js)
-
-```html
-<script src="src/meme-ui.js"></script>
-```
-
-```javascript
-// Auto-initializes on page load
-// Toggle states are saved to localStorage automatically
-
-// Manual control:
-MemeUI.init(); // Re-initialize all components
-```
-
-| Method | Description |
-|--------|-------------|
-| `MemeUI.init()` | Initialize all components |
-| `MemeUI.initToggles()` | Initialize toggle switches only |
-| `MemeUI.updateToggleEmoji(toggle)` | Update single toggle emoji |
-| `MemeUI.saveToggleState(toggle)` | Save toggle state to localStorage |
-| `MemeUI.restoreToggleStates()` | Restore all toggle states |
-
----
-
 ## 📁 Project Structure
 
 ```
-meme-ui-design/
+MemeDesign/
 ├── src/
-│   ├── MemeUIDesign.css    # Core CSS library
-│   └── meme-ui.js          # JavaScript (optional)
+│   └── MemeUIDesign.css    # Core CSS library (JS included)
 ├── demo/
 │   └── index.html          # Demo page
 ├── README.md               # This file
 └── LICENSE                 # WTFPL
 ```
-
----
-
-## 🐛 Changelog
-
-### v1.0.1 (Latest)
-- 🐛 **Fixed:** Toggle emoji now correctly switches 👎↔👍
-- 🐛 **Fixed:** CSS scoped to prevent conflicts
-- 🐛 **Fixed:** Glitch effect now hover-only (add `.meme-glitch-auto` for auto)
-- ✨ **Added:** `meme-ui.js` with localStorage persistence
-- ✨ **Added:** `MemeUI` JavaScript API
-
-### v1.0.0
-- 🎉 Initial release
-- All core components
 
 ---
 
@@ -305,16 +299,6 @@ If this library made you exhale air through your nose slightly faster than norma
 
 ---
 
-**Made with 💀 by [YOUR_NAME]**
+**Made with 💀 by [dryfish09](https://github.com/dryfish09)**
 
 *"Hey! That's pretty good!"* — Rock 🗿
-```
-
----
-
-Copy toàn bộ vào file `README.md` trong repo. Nhớ thay:
-- `YOUR_USERNAME` → GitHub username của bạn
-- `YOUR_REPO` → Tên repo
-- `YOUR_NAME` → Tên bạn / Rock 🗿
-
-Done! 🚀💀
