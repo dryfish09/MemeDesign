@@ -3,15 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MemeUIDesign.css - Fixed v1.0.1</title>
+  <title>MemeUIDesign.css v1.1.0 — Rainbow Update (Fixed)</title>
 
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Impact&family=Comic+Neue:wght@400;700&family=Roboto:wght@900&display=swap" rel="stylesheet">
 
   <style>
-    /* ============================================
-       MEME.CSS v1.0.1 - Bug Fixes
-       ============================================ */
 
     :root {
       /* Màu sắc */
@@ -36,9 +32,23 @@
 
       /* Animation */
       --meme-transition: all 0.1s ease;
+
+      /* Rainbow colors */
+      --rainbow-1: #FF0000;
+      --rainbow-2: #FF8800;
+      --rainbow-3: #FFFF00;
+      --rainbow-4: #00FF00;
+      --rainbow-5: #0088FF;
+      --rainbow-6: #8B00FF;
+      --rainbow-7: #FF00FF;
+
+      /* Rainbow animation speed — FIXED: chậm hơn, dễ chịu */
+      --rainbow-speed: 8s;
     }
 
-    /* Reset - SCOPED: Chỉ áp dụng cho element có class meme-* */
+    /* ============================================
+       RESET - SCOPED
+       ============================================ */
     [class*="meme-btn"],
     [class*="meme-card"],
     [class*="meme-input"],
@@ -64,20 +74,25 @@
     .meme-mt-3,
     .meme-mb-1,
     .meme-mb-2,
-    .meme-mb-3 {
+    .meme-mb-3,
+    [class*="meme-rainbow"] {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    /* ===== CONTAINER ===== */
+    /* ============================================
+       CONTAINER
+       ============================================ */
     .meme-container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 20px;
     }
 
-    /* ===== BUTTONS ===== */
+    /* ============================================
+       BUTTONS
+       ============================================ */
     .meme-btn {
       display: inline-block;
       padding: 12px 24px;
@@ -103,50 +118,16 @@
       box-shadow: var(--meme-shadow-sm);
     }
 
-    .meme-btn-red {
-      background: var(--meme-red);
-      color: var(--meme-white);
-    }
+    .meme-btn-red { background: var(--meme-red); color: var(--meme-white); }
+    .meme-btn-blue { background: var(--meme-blue); color: var(--meme-white); }
+    .meme-btn-green { background: var(--meme-green); color: var(--meme-black); }
+    .meme-btn-yellow { background: var(--meme-yellow); color: var(--meme-black); }
+    .meme-btn-purple { background: var(--meme-purple); color: var(--meme-white); }
+    .meme-btn-pink { background: var(--meme-pink); color: var(--meme-black); }
 
-    .meme-btn-blue {
-      background: var(--meme-blue);
-      color: var(--meme-white);
-    }
-
-    .meme-btn-green {
-      background: var(--meme-green);
-      color: var(--meme-black);
-    }
-
-    .meme-btn-yellow {
-      background: var(--meme-yellow);
-      color: var(--meme-black);
-    }
-
-    .meme-btn-purple {
-      background: var(--meme-purple);
-      color: var(--meme-white);
-    }
-
-    .meme-btn-pink {
-      background: var(--meme-pink);
-      color: var(--meme-black);
-    }
-
-    .meme-btn-lg {
-      padding: 16px 32px;
-      font-size: 1.5rem;
-    }
-
-    .meme-btn-xl {
-      padding: 20px 40px;
-      font-size: 2rem;
-    }
-
-    .meme-btn-block {
-      display: block;
-      width: 100%;
-    }
+    .meme-btn-lg { padding: 16px 32px; font-size: 1.5rem; }
+    .meme-btn-xl { padding: 20px 40px; font-size: 2rem; }
+    .meme-btn-block { display: block; width: 100%; }
 
     .meme-btn-subscribe {
       background: var(--meme-red);
@@ -155,16 +136,63 @@
     }
 
     @keyframes meme-pulse {
-      0%,
-      100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.05);
-      }
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
     }
 
-    /* ===== CARDS ===== */
+    /* ============================================
+       BUTTONS - RAINBOW (FIXED v1.1.0)
+       Tốc độ: var(--rainbow-speed) = 8s
+       ============================================ */
+
+    .meme-btn-rainbow {
+      background: linear-gradient(
+        90deg,
+        var(--rainbow-1),
+        var(--rainbow-2),
+        var(--rainbow-3),
+        var(--rainbow-4),
+        var(--rainbow-5),
+        var(--rainbow-6),
+        var(--rainbow-7)
+      );
+      background-size: 400% 100%;
+      color: var(--meme-white);
+      text-shadow: 2px 2px 0px var(--meme-black);
+      animation: meme-rainbow-sweep var(--rainbow-speed) linear infinite;
+      border: var(--meme-border);
+    }
+
+    .meme-btn-rainbow:hover {
+      animation-duration: 3s;
+      filter: brightness(1.1);
+    }
+
+    .meme-btn-rainbow-static {
+      background: linear-gradient(
+        90deg,
+        var(--rainbow-1),
+        var(--rainbow-2),
+        var(--rainbow-3),
+        var(--rainbow-4),
+        var(--rainbow-5),
+        var(--rainbow-6),
+        var(--rainbow-7)
+      );
+      background-size: 400% 100%;
+      color: var(--meme-white);
+      text-shadow: 2px 2px 0px var(--meme-black);
+      border: var(--meme-border);
+    }
+
+    @keyframes meme-rainbow-sweep {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 400% 50%; }
+    }
+
+    /* ============================================
+       CARDS
+       ============================================ */
     .meme-card {
       background: var(--meme-white);
       border: var(--meme-border);
@@ -205,7 +233,98 @@
       margin-bottom: 15px;
     }
 
-    /* ===== FORMS ===== */
+    /* ============================================
+       CARDS - RAINBOW (FIXED v1.1.0)
+       ============================================ */
+
+    .meme-card-rainbow {
+      background: var(--meme-white);
+      border: 3px solid transparent;
+      background-clip: padding-box;
+      position: relative;
+    }
+
+    .meme-card-rainbow::before {
+      content: '';
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      right: -3px;
+      bottom: -3px;
+      background: linear-gradient(
+        90deg,
+        var(--rainbow-1),
+        var(--rainbow-2),
+        var(--rainbow-3),
+        var(--rainbow-4),
+        var(--rainbow-5),
+        var(--rainbow-6),
+        var(--rainbow-7)
+      );
+      background-size: 400% 100%;
+      z-index: -1;
+      animation: meme-rainbow-sweep var(--rainbow-speed) linear infinite;
+    }
+
+    .meme-card-rainbow .meme-card-img {
+      background: linear-gradient(
+        135deg,
+        var(--rainbow-1),
+        var(--rainbow-2),
+        var(--rainbow-3),
+        var(--rainbow-4),
+        var(--rainbow-5),
+        var(--rainbow-6),
+        var(--rainbow-7)
+      );
+      background-size: 400% 400%;
+      animation: meme-rainbow-sweep var(--rainbow-speed) linear infinite;
+    }
+
+    .meme-card-rainbow-static {
+      border: 3px solid transparent;
+      background-clip: padding-box;
+      position: relative;
+    }
+
+    .meme-card-rainbow-static::before {
+      content: '';
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      right: -3px;
+      bottom: -3px;
+      background: linear-gradient(
+        90deg,
+        var(--rainbow-1),
+        var(--rainbow-2),
+        var(--rainbow-3),
+        var(--rainbow-4),
+        var(--rainbow-5),
+        var(--rainbow-6),
+        var(--rainbow-7)
+      );
+      background-size: 400% 100%;
+      z-index: -1;
+    }
+
+    .meme-card-rainbow-static .meme-card-img {
+      background: linear-gradient(
+        135deg,
+        var(--rainbow-1),
+        var(--rainbow-2),
+        var(--rainbow-3),
+        var(--rainbow-4),
+        var(--rainbow-5),
+        var(--rainbow-6),
+        var(--rainbow-7)
+      );
+      background-size: 400% 400%;
+    }
+
+    /* ============================================
+       FORMS
+       ============================================ */
     .meme-input {
       width: 100%;
       padding: 12px;
@@ -247,7 +366,51 @@
       transform: scale(1.02);
     }
 
-    /* ===== ALERTS ===== */
+    /* ============================================
+       INPUTS - RAINBOW (FIXED v1.1.0)
+       ============================================ */
+
+    .meme-input-rainbow {
+      border: 3px solid transparent;
+      background-clip: padding-box;
+      position: relative;
+      background-color: var(--meme-white);
+    }
+
+    .meme-input-rainbow:focus {
+      border-image: linear-gradient(
+        90deg,
+        var(--rainbow-1),
+        var(--rainbow-2),
+        var(--rainbow-3),
+        var(--rainbow-4),
+        var(--rainbow-5),
+        var(--rainbow-6),
+        var(--rainbow-7)
+      ) 1;
+      animation: meme-rainbow-sweep var(--rainbow-speed) linear infinite;
+      background: #FFFDE7;
+      transform: scale(1.02);
+    }
+
+    .meme-input-rainbow-static {
+      border: 3px solid;
+      border-image: linear-gradient(
+        90deg,
+        var(--rainbow-1),
+        var(--rainbow-2),
+        var(--rainbow-3),
+        var(--rainbow-4),
+        var(--rainbow-5),
+        var(--rainbow-6),
+        var(--rainbow-7)
+      ) 1;
+      background: var(--meme-white);
+    }
+
+    /* ============================================
+       ALERTS
+       ============================================ */
     .meme-alert {
       padding: 16px;
       border: var(--meme-border);
@@ -259,12 +422,8 @@
       position: relative;
     }
 
-    .meme-alert-success {
-      background: var(--meme-green);
-      color: var(--meme-black);
-    }
+    .meme-alert-success { background: var(--meme-green); color: var(--meme-black); }
 
-    /* FIXED: Glitch chỉ chạy khi hover, không tự động rung */
     .meme-alert-error {
       background: var(--meme-red);
       color: var(--meme-white);
@@ -273,46 +432,64 @@
 
     .meme-alert-error:hover {
       animation: meme-glitch 0.3s 2;
-      /* Chỉ chạy 2 lần khi hover */
     }
 
-    /* Thêm class riêng nếu muốn glitch tự động */
     .meme-alert-error.meme-glitch-auto {
       animation: meme-glitch 0.3s infinite;
     }
 
     @keyframes meme-glitch {
-      0% {
-        transform: translate(0);
-      }
-      20% {
-        transform: translate(-2px, 2px);
-      }
-      40% {
-        transform: translate(2px, -2px);
-      }
-      60% {
-        transform: translate(-2px, -2px);
-      }
-      80% {
-        transform: translate(2px, 2px);
-      }
-      100% {
-        transform: translate(0);
-      }
+      0% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(2px, -2px); }
+      60% { transform: translate(-2px, -2px); }
+      80% { transform: translate(2px, 2px); }
+      100% { transform: translate(0); }
     }
 
-    .meme-alert-warning {
-      background: var(--meme-yellow);
-      color: var(--meme-black);
-    }
+    .meme-alert-warning { background: var(--meme-yellow); color: var(--meme-black); }
+    .meme-alert-info { background: var(--meme-blue); color: var(--meme-white); }
 
-    .meme-alert-info {
-      background: var(--meme-blue);
+    /* ============================================
+       ALERTS - RAINBOW (FIXED v1.1.0)
+       ============================================ */
+
+    .meme-alert-rainbow {
+      background: linear-gradient(
+        90deg,
+        var(--rainbow-1),
+        var(--rainbow-2),
+        var(--rainbow-3),
+        var(--rainbow-4),
+        var(--rainbow-5),
+        var(--rainbow-6),
+        var(--rainbow-7)
+      );
+      background-size: 400% 100%;
       color: var(--meme-white);
+      text-shadow: 2px 2px 0px var(--meme-black);
+      animation: meme-rainbow-sweep var(--rainbow-speed) linear infinite;
     }
 
-    /* ===== BADGES ===== */
+    .meme-alert-rainbow-static {
+      background: linear-gradient(
+        90deg,
+        var(--rainbow-1),
+        var(--rainbow-2),
+        var(--rainbow-3),
+        var(--rainbow-4),
+        var(--rainbow-5),
+        var(--rainbow-6),
+        var(--rainbow-7)
+      );
+      background-size: 400% 100%;
+      color: var(--meme-white);
+      text-shadow: 2px 2px 0px var(--meme-black);
+    }
+
+    /* ============================================
+       BADGES
+       ============================================ */
     .meme-badge {
       display: inline-block;
       padding: 8px 16px;
@@ -333,13 +510,8 @@
     }
 
     @keyframes meme-glow {
-      0%,
-      100% {
-        box-shadow: 0px 0px 10px var(--meme-green);
-      }
-      50% {
-        box-shadow: 0px 0px 30px var(--meme-green);
-      }
+      0%, 100% { box-shadow: 0px 0px 10px var(--meme-green); }
+      50% { box-shadow: 0px 0px 30px var(--meme-green); }
     }
 
     .meme-badge-hot {
@@ -348,16 +520,52 @@
     }
 
     @keyframes meme-shake {
-      0%,
-      100% {
-        transform: rotate(-3deg);
-      }
-      50% {
-        transform: rotate(3deg);
-      }
+      0%, 100% { transform: rotate(-3deg); }
+      50% { transform: rotate(3deg); }
     }
 
-    /* ===== PROGRESS BAR ===== */
+    /* ============================================
+       BADGES - RAINBOW (FIXED v1.1.0)
+       ============================================ */
+
+    .meme-badge-rainbow {
+      background: linear-gradient(
+        90deg,
+        var(--rainbow-1),
+        var(--rainbow-2),
+        var(--rainbow-3),
+        var(--rainbow-4),
+        var(--rainbow-5),
+        var(--rainbow-6),
+        var(--rainbow-7)
+      );
+      background-size: 400% 100%;
+      color: var(--meme-white);
+      text-shadow: 1px 1px 0px var(--meme-black);
+      animation: meme-rainbow-sweep var(--rainbow-speed) linear infinite;
+      border: var(--meme-border);
+    }
+
+    .meme-badge-rainbow-static {
+      background: linear-gradient(
+        90deg,
+        var(--rainbow-1),
+        var(--rainbow-2),
+        var(--rainbow-3),
+        var(--rainbow-4),
+        var(--rainbow-5),
+        var(--rainbow-6),
+        var(--rainbow-7)
+      );
+      background-size: 400% 100%;
+      color: var(--meme-white);
+      text-shadow: 1px 1px 0px var(--meme-black);
+      border: var(--meme-border);
+    }
+
+    /* ============================================
+       PROGRESS BARS
+       ============================================ */
     .meme-progress {
       width: 100%;
       height: 30px;
@@ -369,11 +577,13 @@
 
     .meme-progress-bar {
       height: 100%;
-      background: repeating-linear-gradient(45deg,
-          var(--meme-yellow),
-          var(--meme-yellow) 10px,
-          var(--meme-black) 10px,
-          var(--meme-black) 20px);
+      background: repeating-linear-gradient(
+        45deg,
+        var(--meme-yellow),
+        var(--meme-yellow) 10px,
+        var(--meme-black) 10px,
+        var(--meme-black) 20px
+      );
       display: flex;
       align-items: center;
       justify-content: center;
@@ -384,7 +594,48 @@
       transition: width 0.5s;
     }
 
-    /* ===== TOGGLE - FIXED ===== */
+    /* ============================================
+       PROGRESS - RAINBOW (FIXED v1.1.0)
+       Mượt mà, không bị cắt vụn
+       ============================================ */
+
+    /* Rainbow Animated Progress — FIXED: gradient mượt, không bị cắt */
+    .meme-progress-rainbow .meme-progress-bar {
+      background: linear-gradient(
+        90deg,
+        var(--rainbow-1),
+        var(--rainbow-2),
+        var(--rainbow-3),
+        var(--rainbow-4),
+        var(--rainbow-5),
+        var(--rainbow-6),
+        var(--rainbow-7)
+      );
+      background-size: 200% 100%;
+      animation: meme-rainbow-sweep var(--rainbow-speed) linear infinite;
+      color: var(--meme-white);
+      text-shadow: 1px 1px 0px var(--meme-black);
+    }
+
+    /* Rainbow Static Progress */
+    .meme-progress-rainbow-static .meme-progress-bar {
+      background: linear-gradient(
+        90deg,
+        var(--rainbow-1),
+        var(--rainbow-2),
+        var(--rainbow-3),
+        var(--rainbow-4),
+        var(--rainbow-5),
+        var(--rainbow-6),
+        var(--rainbow-7)
+      );
+      color: var(--meme-white);
+      text-shadow: 1px 1px 0px var(--meme-black);
+    }
+
+    /* ============================================
+       TOGGLE
+       ============================================ */
     .meme-toggle {
       display: inline-flex;
       align-items: center;
@@ -422,16 +673,17 @@
       display: none;
     }
 
-    /* FIXED: Khi checked -> đổi màu track & di chuyển thumb */
-    .meme-toggle-input:checked+.meme-toggle-track {
+    .meme-toggle-input:checked + .meme-toggle-track {
       background: var(--meme-green);
     }
 
-    .meme-toggle-input:checked+.meme-toggle-track .meme-toggle-thumb {
+    .meme-toggle-input:checked + .meme-toggle-track .meme-toggle-thumb {
       left: 33px;
     }
 
-    /* ===== HEADERS ===== */
+    /* ============================================
+       HEADERS & TITLES
+       ============================================ */
     .meme-header {
       background: var(--meme-red);
       color: var(--meme-white);
@@ -451,42 +703,178 @@
       margin: 0;
     }
 
-    /* ===== UTILITIES ===== */
-    .meme-text-center {
-      text-align: center;
-    }
-
-    .meme-text-impact {
+    .meme-section-title {
       font-family: var(--meme-font-impact);
+      font-size: 2rem;
+      color: var(--meme-yellow);
+      text-shadow: 2px 2px 0px var(--meme-black);
+      text-align: center;
+      margin: 30px 0 20px;
+      text-transform: uppercase;
     }
 
-    .meme-text-comic {
-      font-family: var(--meme-font-comic);
+    /* ============================================
+       HEADERS & TITLES - RAINBOW (FIXED v1.1.0)
+       ============================================ */
+
+    .meme-header-rainbow {
+      background: linear-gradient(
+        90deg,
+        var(--rainbow-1),
+        var(--rainbow-2),
+        var(--rainbow-3),
+        var(--rainbow-4),
+        var(--rainbow-5),
+        var(--rainbow-6),
+        var(--rainbow-7)
+      );
+      background-size: 400% 100%;
+      color: var(--meme-white);
+      border: var(--meme-border);
+      box-shadow: var(--meme-shadow);
+      padding: 15px 30px;
+      text-align: center;
+      font-family: var(--meme-font-impact);
+      text-transform: uppercase;
+      margin-bottom: 30px;
+      animation: meme-rainbow-sweep var(--rainbow-speed) linear infinite;
     }
 
-    .meme-mt-1 {
-      margin-top: 10px;
+    .meme-header-rainbow h1 {
+      font-size: 2.5rem;
+      text-shadow: 3px 3px 0px var(--meme-black);
+      letter-spacing: 2px;
+      margin: 0;
     }
 
-    .meme-mt-2 {
-      margin-top: 20px;
-    }
-
-    .meme-mt-3 {
-      margin-top: 30px;
-    }
-
-    .meme-mb-1 {
-      margin-bottom: 10px;
-    }
-
-    .meme-mb-2 {
-      margin-bottom: 20px;
-    }
-
-    .meme-mb-3 {
+    .meme-header-rainbow-static {
+      background: linear-gradient(
+        90deg,
+        var(--rainbow-1),
+        var(--rainbow-2),
+        var(--rainbow-3),
+        var(--rainbow-4),
+        var(--rainbow-5),
+        var(--rainbow-6),
+        var(--rainbow-7)
+      );
+      background-size: 400% 100%;
+      color: var(--meme-white);
+      border: var(--meme-border);
+      box-shadow: var(--meme-shadow);
+      padding: 15px 30px;
+      text-align: center;
+      font-family: var(--meme-font-impact);
+      text-transform: uppercase;
       margin-bottom: 30px;
     }
+
+    .meme-header-rainbow-static h1 {
+      font-size: 2.5rem;
+      text-shadow: 3px 3px 0px var(--meme-black);
+      letter-spacing: 2px;
+      margin: 0;
+    }
+
+    .meme-section-title-rainbow {
+      font-family: var(--meme-font-impact);
+      font-size: 2rem;
+      text-align: center;
+      margin: 30px 0 20px;
+      text-transform: uppercase;
+      background: linear-gradient(
+        90deg,
+        var(--rainbow-1),
+        var(--rainbow-2),
+        var(--rainbow-3),
+        var(--rainbow-4),
+        var(--rainbow-5),
+        var(--rainbow-6),
+        var(--rainbow-7)
+      );
+      background-size: 400% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: meme-rainbow-sweep var(--rainbow-speed) linear infinite;
+      -webkit-text-stroke: 1px var(--meme-black);
+    }
+
+    .meme-section-title-rainbow-static {
+      font-family: var(--meme-font-impact);
+      font-size: 2rem;
+      text-align: center;
+      margin: 30px 0 20px;
+      text-transform: uppercase;
+      background: linear-gradient(
+        90deg,
+        var(--rainbow-1),
+        var(--rainbow-2),
+        var(--rainbow-3),
+        var(--rainbow-4),
+        var(--rainbow-5),
+        var(--rainbow-6),
+        var(--rainbow-7)
+      );
+      background-size: 400% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      -webkit-text-stroke: 1px var(--meme-black);
+    }
+
+    /* ============================================
+       TEXT - RAINBOW (FIXED v1.1.0)
+       ============================================ */
+
+    .meme-text-rainbow {
+      background: linear-gradient(
+        90deg,
+        var(--rainbow-1),
+        var(--rainbow-2),
+        var(--rainbow-3),
+        var(--rainbow-4),
+        var(--rainbow-5),
+        var(--rainbow-6),
+        var(--rainbow-7)
+      );
+      background-size: 400% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: meme-rainbow-sweep var(--rainbow-speed) linear infinite;
+    }
+
+    .meme-text-rainbow-static {
+      background: linear-gradient(
+        90deg,
+        var(--rainbow-1),
+        var(--rainbow-2),
+        var(--rainbow-3),
+        var(--rainbow-4),
+        var(--rainbow-5),
+        var(--rainbow-6),
+        var(--rainbow-7)
+      );
+      background-size: 400% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ============================================
+       UTILITIES
+       ============================================ */
+    .meme-text-center { text-align: center; }
+    .meme-text-impact { font-family: var(--meme-font-impact); }
+    .meme-text-comic { font-family: var(--meme-font-comic); }
+
+    .meme-mt-1 { margin-top: 10px; }
+    .meme-mt-2 { margin-top: 20px; }
+    .meme-mt-3 { margin-top: 30px; }
+    .meme-mb-1 { margin-bottom: 10px; }
+    .meme-mb-2 { margin-bottom: 20px; }
+    .meme-mb-3 { margin-bottom: 30px; }
 
     .meme-grid {
       display: grid;
@@ -508,23 +896,27 @@
       flex-wrap: wrap;
     }
 
-    /* ===== BACKGROUNDS ===== */
+    /* ============================================
+       BACKGROUNDS
+       ============================================ */
     .meme-bg-rainbow {
-      background: linear-gradient(45deg, #ff0000, #ff8800, #ffff00, #00ff00, #0088ff, #8b00ff);
+      background: linear-gradient(
+        45deg,
+        #ff0000,
+        #ff8800,
+        #ffff00,
+        #00ff00,
+        #0088ff,
+        #8b00ff
+      );
       background-size: 400% 400%;
       animation: meme-rainbow 5s ease infinite;
     }
 
     @keyframes meme-rainbow {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .meme-bg-dark {
@@ -533,23 +925,18 @@
       border: var(--meme-border);
     }
 
-    /* ===== SECTION TITLE ===== */
-    .meme-section-title {
-      font-family: var(--meme-font-impact);
-      font-size: 2rem;
-      color: var(--meme-yellow);
-      text-shadow: 2px 2px 0px var(--meme-black);
-      text-align: center;
-      margin: 30px 0 20px;
-      text-transform: uppercase;
-    }
-
-    /* ===== Responsive ===== */
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
     @media (max-width: 768px) {
-      .meme-header h1 {
+      .meme-header h1,
+      .meme-header-rainbow h1,
+      .meme-header-rainbow-static h1 {
         font-size: 1.5rem;
       }
-      .meme-section-title {
+      .meme-section-title,
+      .meme-section-title-rainbow,
+      .meme-section-title-rainbow-static {
         font-size: 1.5rem;
       }
       .meme-grid {
@@ -562,189 +949,240 @@
 
   <div class="meme-container">
 
-    <!-- ===== HEADER ===== -->
-    <header class="meme-header">
-      <h1>🚀 MEME.CSS - Bug Fixed v1.0.1</h1>
+    <!-- ============================================
+         HEADER - RAINBOW ANIMATED
+         ============================================ -->
+    <header class="meme-header-rainbow">
+      <h1>🚀 MEME.CSS v1.1.0 🌈</h1>
+      <p class="meme-text-comic" style="font-size: 1.2rem; margin-top: 10px; color: white; text-shadow: 1px 1px 0 black;">
+        Rainbow Update — Smooth & Slow (8s cycle)
+      </p>
     </header>
 
-    <!-- ===== TOGGLE FIX DEMO ===== -->
-    <h2 class="meme-section-title">🔘 Toggle Fixed 👎→👍</h2>
-    <div class="meme-flex-center meme-bg-dark">
-      <span class="meme-text-impact" style="font-size: 1.5rem; color: var(--meme-white);">CRINGE</span>
+    <!-- ============================================
+         SECTION TITLE - RAINBOW
+         ============================================ -->
+    <h2 class="meme-section-title-rainbow">🌈 Rainbow Title (Smooth Animated)</h2>
+    <h2 class="meme-section-title-rainbow-static">🌈 Rainbow Title (Static)</h2>
 
-      <label class="meme-toggle">
-        <input type="checkbox" class="meme-toggle-input" id="based-toggle">
-        <div class="meme-toggle-track">
-          <div class="meme-toggle-thumb">👎</div>
-        </div>
-      </label>
-
-      <span class="meme-text-impact" style="font-size: 1.5rem; color: var(--meme-white);">BASED</span>
+    <!-- ============================================
+         TEXT - RAINBOW
+         ============================================ -->
+    <h2 class="meme-section-title">Text Rainbow</h2>
+    <div class="meme-bg-dark">
+      <p class="meme-text-rainbow meme-text-impact" style="font-size: 3rem; text-align: center; -webkit-text-stroke: 1px black;">
+        SMOOTH RAINBOW TEXT
+      </p>
+      <p class="meme-text-rainbow meme-text-comic" style="font-size: 1.5rem; text-align: center;">
+        Gentle on the eyes 🌈✨
+      </p>
+      <div class="meme-mt-2"></div>
+      <p class="meme-text-rainbow-static meme-text-impact" style="font-size: 3rem; text-align: center; -webkit-text-stroke: 1px black;">
+        STATIC RAINBOW TEXT
+      </p>
+      <p class="meme-text-rainbow-static meme-text-comic" style="font-size: 1.5rem; text-align: center;">
+        No animation, still fabulous ✨
+      </p>
     </div>
+
+    <!-- ============================================
+         BUTTONS - RAINBOW
+         ============================================ -->
+    <h2 class="meme-section-title">Buttons Rainbow</h2>
+    <div class="meme-bg-dark meme-flex-center">
+      <button class="meme-btn meme-btn-rainbow">🌈 Animated</button>
+      <button class="meme-btn meme-btn-rainbow meme-btn-lg">🌈 Large</button>
+      <button class="meme-btn meme-btn-rainbow meme-btn-xl">🌈 XL</button>
+      <button class="meme-btn meme-btn-rainbow meme-btn-block">🌈 Full Width Block</button>
+    </div>
+
     <p class="meme-text-comic meme-text-center meme-mt-1" style="color: var(--meme-white);">
-      👆 Click toggle — emoji changes & state saved to localStorage!
+      👆 Hover = faster (3s). Default = chill (8s).
     </p>
 
-    <!-- ===== BUTTONS ===== -->
-    <h2 class="meme-section-title">Buttons</h2>
+    <h3 class="meme-text-impact meme-text-center meme-mt-2" style="color: white; font-size: 1.5rem;">
+      ⬇️ Static Rainbow ⬇️
+    </h3>
+    <div class="meme-bg-dark meme-flex-center meme-mt-2">
+      <button class="meme-btn meme-btn-rainbow-static">🌈 Static</button>
+      <button class="meme-btn meme-btn-rainbow-static meme-btn-lg">🌈 Large</button>
+      <button class="meme-btn meme-btn-rainbow-static meme-btn-xl">🌈 XL</button>
+      <button class="meme-btn meme-btn-rainbow-static meme-btn-block">🌈 Full Width Block</button>
+    </div>
+
+    <!-- ============================================
+         BUTTONS - CLASSIC (v1.0.0)
+         ============================================ -->
+    <h2 class="meme-section-title">Buttons Classic (v1.0.0)</h2>
     <div class="meme-bg-dark meme-flex-center">
       <button class="meme-btn meme-btn-red">Red</button>
       <button class="meme-btn meme-btn-blue">Blue</button>
       <button class="meme-btn meme-btn-green">Green</button>
       <button class="meme-btn meme-btn-yellow">Yellow</button>
       <button class="meme-btn meme-btn-purple">Purple</button>
-      <button class="meme-btn meme-btn-pink meme-btn-lg">Pink LG</button>
-      <button class="meme-btn meme-btn-subscribe meme-btn-xl">Subscribe 🔔</button>
-      <button class="meme-btn meme-btn-red meme-btn-block">Full Width Block</button>
+      <button class="meme-btn meme-btn-pink">Pink</button>
+      <button class="meme-btn meme-btn-subscribe">Subscribe 🔔</button>
     </div>
 
-    <!-- ===== CARDS ===== -->
-    <h2 class="meme-section-title">Cards</h2>
+    <!-- ============================================
+         CARDS - RAINBOW
+         ============================================ -->
+    <h2 class="meme-section-title">Cards Rainbow</h2>
     <div class="meme-grid">
+      <!-- Animated Rainbow Card -->
+      <div class="meme-card meme-card-rainbow">
+        <div class="meme-card-img">🌈</div>
+        <div class="meme-card-body">
+          <div class="meme-card-title">Animated Rainbow</div>
+          <p class="meme-card-text">Smooth border & image! ✨</p>
+          <button class="meme-btn meme-btn-rainbow meme-btn-block">WOW</button>
+        </div>
+      </div>
+
+      <!-- Static Rainbow Card -->
+      <div class="meme-card meme-card-rainbow-static">
+        <div class="meme-card-img">🌈</div>
+        <div class="meme-card-body">
+          <div class="meme-card-title">Static Rainbow</div>
+          <p class="meme-card-text">Still rainbow, no motion.</p>
+          <button class="meme-btn meme-btn-rainbow-static meme-btn-block">NICE</button>
+        </div>
+      </div>
+
+      <!-- Classic Card -->
       <div class="meme-card">
         <div class="meme-card-img" style="background: linear-gradient(45deg, #FFD700, #FF8C00);">🐸</div>
         <div class="meme-card-body">
-          <div class="meme-card-title">Pepe Card</div>
-          <p class="meme-card-text">Feels good man. Rarest Pepe.</p>
-          <button class="meme-btn meme-btn-green meme-btn-block">BUY NOW</button>
-        </div>
-      </div>
-
-      <div class="meme-card">
-        <div class="meme-card-img" style="background: linear-gradient(45deg, #FF69B4, #8B00FF);">💀</div>
-        <div class="meme-card-body">
-          <div class="meme-card-title">Skull Card</div>
-          <p class="meme-card-text">When you die from cringe.</p>
-          <button class="meme-btn meme-btn-red meme-btn-block">💀 DEAD</button>
-        </div>
-      </div>
-
-      <div class="meme-card">
-        <div class="meme-card-img" style="background: linear-gradient(45deg, #00FF00, #0000FF);">🗿</div>
-        <div class="meme-card-body">
-          <div class="meme-card-title">Moai Card 🗿</div>
-          <p class="meme-card-text">🗿🗿🗿🗿🗿🗿🗿🗿🗿</p>
-          <button class="meme-btn meme-btn-purple meme-btn-block">🗿 SAME</button>
+          <div class="meme-card-title">Classic Card</div>
+          <p class="meme-card-text">Original v1.0.0 style.</p>
+          <button class="meme-btn meme-btn-green meme-btn-block">OG</button>
         </div>
       </div>
     </div>
 
-    <!-- ===== FORMS ===== -->
-    <h2 class="meme-section-title">Forms</h2>
+    <!-- ============================================
+         FORMS - RAINBOW
+         ============================================ -->
+    <h2 class="meme-section-title">Inputs Rainbow</h2>
     <div class="meme-bg-dark">
-      <label class="meme-label" style="color: var(--meme-green);">Username:</label>
-      <input type="text" class="meme-input meme-mb-2" placeholder="Enter epic name...">
+      <label class="meme-label" style="color: var(--meme-green);">Rainbow Animated Input:</label>
+      <input type="text" class="meme-input meme-input-rainbow meme-mb-2" placeholder="Focus me for rainbow! 🌈">
 
-      <label class="meme-label" style="color: var(--meme-pink);">Bio:</label>
-      <textarea class="meme-textarea meme-mb-2" placeholder="Write your copypasta here..."></textarea>
+      <label class="meme-label" style="color: var(--meme-pink);">Rainbow Static Input:</label>
+      <input type="text" class="meme-input meme-input-rainbow-static meme-mb-2" placeholder="Always rainbow border 🌈">
 
-      <button class="meme-btn meme-btn-green meme-btn-block">Submit 🚀</button>
+      <label class="meme-label" style="color: var(--meme-white);">Classic Input:</label>
+      <input type="text" class="meme-input meme-mb-2" placeholder="Original input">
     </div>
 
-    <!-- ===== ALERTS ===== -->
-    <h2 class="meme-section-title">Alerts (Glitch Fixed)</h2>
-    <div class="meme-alert meme-alert-success">✅ Success! Noice!</div>
+    <!-- ============================================
+         ALERTS - RAINBOW
+         ============================================ -->
+    <h2 class="meme-section-title">Alerts Rainbow</h2>
+    <div class="meme-alert meme-alert-rainbow">🌈 Animated Rainbow Alert!</div>
+    <div class="meme-alert meme-alert-rainbow-static">🌈 Static Rainbow Alert!</div>
+    <div class="meme-alert meme-alert-success">✅ Classic Success (still works)</div>
+    <div class="meme-alert meme-alert-error">❌ Classic Error (hover to glitch)</div>
+    <div class="meme-alert meme-alert-error meme-glitch-auto">❌ Auto Glitch Error</div>
 
-    <!-- Hover to glitch (runs 2x only) -->
-    <div class="meme-alert meme-alert-error">❌ Error! Hover me to glitch!</div>
-
-    <!-- Auto glitch with extra class -->
-    <div class="meme-alert meme-alert-error meme-glitch-auto">❌ Error! Auto glitch mode!</div>
-
-    <div class="meme-alert meme-alert-warning">⚠️ Warning! Sus!</div>
-    <div class="meme-alert meme-alert-info">ℹ️ Info: Touch grass!</div>
-
-    <!-- ===== BADGES ===== -->
-    <h2 class="meme-section-title">Badges</h2>
+    <!-- ============================================
+         BADGES - RAINBOW
+         ============================================ -->
+    <h2 class="meme-section-title">Badges Rainbow</h2>
     <div class="meme-flex-center meme-mb-3">
+      <span class="meme-badge meme-badge-rainbow">🌈 Animated</span>
+      <span class="meme-badge meme-badge-rainbow-static">🌈 Static</span>
       <span class="meme-badge meme-badge-new">NEW</span>
       <span class="meme-badge meme-badge-hot">HOT 🔥</span>
       <span class="meme-badge">OG</span>
-      <span class="meme-badge" style="background: var(--meme-yellow); color: black;">PREMIUM</span>
-      <span class="meme-badge" style="background: var(--meme-pink);">UWU</span>
     </div>
 
-    <!-- ===== PROGRESS BARS ===== -->
-    <h2 class="meme-section-title">Progress Bars</h2>
+    <!-- ============================================
+         PROGRESS - RAINBOW (FIXED)
+         ============================================ -->
+    <h2 class="meme-section-title">Progress Rainbow (Fixed)</h2>
     <div class="meme-bg-dark">
-      <div class="meme-progress meme-mb-2">
+      <p style="color: white; font-family: var(--meme-font-comic); margin-bottom: 10px;">
+        🌈 Smooth Animated Rainbow Progress:
+      </p>
+      <div class="meme-progress meme-progress-rainbow meme-mb-2">
         <div class="meme-progress-bar" style="width: 69%;">69%</div>
       </div>
-      <div class="meme-progress meme-mb-2">
+
+      <p style="color: white; font-family: var(--meme-font-comic); margin-bottom: 10px;">
+        🌈 Static Rainbow Progress:
+      </p>
+      <div class="meme-progress meme-progress-rainbow-static meme-mb-2">
         <div class="meme-progress-bar" style="width: 42%;">42%</div>
       </div>
+
+      <p style="color: white; font-family: var(--meme-font-comic); margin-bottom: 10px;">
+        Classic Progress:
+      </p>
       <div class="meme-progress">
-        <div class="meme-progress-bar" style="width: 100%;">100% DONE</div>
+        <div class="meme-progress-bar" style="width: 100%;">100%</div>
       </div>
     </div>
 
-    <!-- ===== HEADER EXAMPLE ===== -->
-    <h2 class="meme-section-title">Section Header</h2>
-    <header class="meme-header">
-      <h1>This is a meme header</h1>
-      <p class="meme-text-comic" style="font-size: 1.2rem; margin-top: 10px;">Subtitle in comic sans</p>
+    <!-- ============================================
+         HEADER - RAINBOW STATIC
+         ============================================ -->
+    <h2 class="meme-section-title">Header Rainbow</h2>
+    <header class="meme-header-rainbow-static">
+      <h1>🌈 Static Rainbow Header</h1>
+      <p class="meme-text-comic" style="font-size: 1rem; margin-top: 10px; color: white;">No animation here!</p>
     </header>
 
-    <!-- ===== UTILITY CLASSES ===== -->
-    <h2 class="meme-section-title">Utility Classes</h2>
-    <div class="meme-bg-dark">
-      <p class="meme-text-impact meme-text-center" style="color: var(--meme-yellow); font-size: 1.5rem;">
-        meme-text-impact + meme-text-center
-      </p>
-      <p class="meme-text-comic meme-text-center" style="color: var(--meme-pink); font-size: 1.2rem;">
-        meme-text-comic + meme-text-center
-      </p>
-      <div class="meme-mt-2 meme-mb-2">
-        <span style="color: var(--meme-white);">Spacing: meme-mt-2 + meme-mb-2</span>
-      </div>
+    <!-- ============================================
+         CLASSIC HEADER
+         ============================================ -->
+    <header class="meme-header">
+      <h1>🔴 Classic Red Header</h1>
+      <p class="meme-text-comic" style="font-size: 1rem; margin-top: 10px;">Original v1.0.0</p>
+    </header>
+
+    <!-- ============================================
+         TOGGLE
+         ============================================ -->
+    <h2 class="meme-section-title">Toggle</h2>
+    <div class="meme-flex-center meme-bg-dark">
+      <span class="meme-text-impact" style="font-size: 1.5rem; color: var(--meme-white);">CRINGE</span>
+      <label class="meme-toggle">
+        <input type="checkbox" class="meme-toggle-input" id="based-toggle">
+        <div class="meme-toggle-track">
+          <div class="meme-toggle-thumb">👎</div>
+        </div>
+      </label>
+      <span class="meme-text-impact" style="font-size: 1.5rem; color: var(--meme-white);">BASED</span>
     </div>
 
   </div>
 
-  <!-- ==================== MEME.JS ==================== -->
+  <!-- ============================================
+       MEME.JS v1.1.0
+       ============================================ -->
   <script>
-    /* ============================================
-       MEME.JS v1.0.0 - JavaScript for MemeUI
-       ============================================ */
-
     (function() {
       'use strict';
 
-      /**
-       * MemeUI - Khởi tạo tất cả components có logic
-       */
       const MemeUI = {
         init: function() {
           this.initToggles();
-          console.log('💀 MemeUI initialized! All bugs fixed.');
+          console.log('💀🌈 MemeUI v1.1.0 initialized! Bugs fixed.');
         },
 
-        /**
-         * FIXED: Toggle switch - đồng bộ emoji với trạng thái
-         * Khi bật: 👍 | Khi tắt: 👎
-         */
         initToggles: function() {
           const toggles = document.querySelectorAll('.meme-toggle-input');
-
           toggles.forEach(function(toggle) {
-            // Set initial state
             MemeUI.updateToggleEmoji(toggle);
-
-            // Listen for changes
             toggle.addEventListener('change', function() {
               MemeUI.updateToggleEmoji(this);
               MemeUI.saveToggleState(this);
-              console.log('Toggle changed:', this.id, this.checked ? '👍 BASED' : '👎 CRINGE');
             });
           });
-
-          // Restore saved states
           MemeUI.restoreToggleStates();
         },
 
-        /**
-         * Cập nhật emoji trên thumb
-         */
         updateToggleEmoji: function(toggle) {
           const thumb = toggle.nextElementSibling?.querySelector('.meme-toggle-thumb');
           if (thumb) {
@@ -752,18 +1190,12 @@
           }
         },
 
-        /**
-         * Lưu trạng thái toggle vào localStorage
-         */
         saveToggleState: function(toggle) {
           if (toggle.id) {
             localStorage.setItem('meme-toggle-' + toggle.id, toggle.checked);
           }
         },
 
-        /**
-         * Khôi phục trạng thái toggle từ localStorage
-         */
         restoreToggleStates: function() {
           const toggles = document.querySelectorAll('.meme-toggle-input[id]');
           toggles.forEach(function(toggle) {
@@ -776,18 +1208,13 @@
         }
       };
 
-      // Auto-init khi DOM ready
       if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() {
-          MemeUI.init();
-        });
+        document.addEventListener('DOMContentLoaded', function() { MemeUI.init(); });
       } else {
         MemeUI.init();
       }
 
-      // Export ra global
       window.MemeUI = MemeUI;
-
     })();
   </script>
 
